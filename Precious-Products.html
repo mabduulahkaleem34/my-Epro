@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pascal Imitation Jewellery</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /*navbar style code*/
+
+        .navbar {
+            background: linear-gradient(90deg, #343a40, #6c757d);
+            border-bottom: 3px solid #f8d64e;
+        }
+        
+        .navbar-brand {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #f8d64e !important;
+            transition: transform 0.3s ease;
+        }
+        
+        .navbar-brand:hover {
+            transform: scale(1.1);
+        }
+        
+        .navbar-nav .nav-link {
+            font-size: 1.1rem;
+            color: white !important;
+            margin: 0 10px;
+            position: relative;
+        }
+        
+        .navbar-nav .nav-link:hover::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            width: 100%;
+            height: 2px;
+            background: #f8d64e;
+            animation: slideIn 0.3s forwards;
+        }
+        
+        @keyframes slideIn {
+            from {
+                width: 0;
+            }
+            to {
+                width: 100%;
+            }
+        }
+        
+        .navbar-toggler {
+            border-color: #f8d64e;
+        }
+        
+        .navbar-toggler-icon {
+            background-image: url('data:image/svg+xml;charset=utf8,%3Csvg xmlns%3D%22http://www.w3.org/2000/svg%22 fill%3D%22%23f8d64e%22 viewBox%3D%220 0 30 30%22%3E%3Cpath stroke%3D%22rgba%280%2C 0%2C 0%2C 0.5%29%22 stroke-width%3D%222%22 d%3D%22M4 7h22M4 15h22M4 23h22%22/%3E%3C/svg%3E');
+        }
+        
+        .dropdown-menu {
+            background-color: #6c757d;
+            border: 1px solid #f8d64e;
+        }
+        
+        .dropdown-item {
+            color: white;
+            font-size: 1rem;
+        }
+
+        .nav-link i.fa-check {
+            color: #f8d64e;
+            margin-left: 5px;
+        }
+
+        /* navbar end */
+
+       /* .production-section{
+            background: linear-gradient(to right, #f0e1e1, #c1a3a3); 
+            padding: 20px;
+           
+
+        } */
+
+              /* Base styling for product cards */
+.product-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  /* Hover effect for cards */
+  .product-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Smooth image scaling effect */
+  .product-card img {
+    transition: transform 0.3s ease;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .product-card:hover img {
+    transform: scale(1.1);
+  }
+  
+  /* Buttons animation */
+  .product-card button {
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .product-card button:hover {
+    transform: scale(1.05);
+  }
+  
+  /* Quantity controls hover effect */
+  .quantity-controls button:hover {
+    background-color: #f0f0f0;
+  }
+  
+  /* Buy Now button specific effect */
+  .btn-primary:hover {
+    background-color: #007bff;
+    color: #fff;
+  }
+  
+  /* Compare button specific effect */
+  .btn-secondary:hover {
+    background-color: #6c757d;
+    color: #fff;
+  }
+  
+  /* Clear button specific effect */
+  .btn-danger:hover {
+    background-color: #dc3545;
+    color: #fff;
+  }
+  
+  /* Card title hover effect */
+  .product-card .card-title {
+    transition: color 0.3s ease;
+  }
+  
+  .product-card:hover .card-title {
+    color: #007bff;
+  }
+  
+
+       
+        .section-heading {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        @keyframes blink {
+            0% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+        
+        .sub-heading {
+            font-size: 2.5rem;
+            font-weight: bold;
+            font-style: italic;
+            
+            background: linear-gradient(90deg, #1a59ed, #2c3e50);
+            -webkit-background-clip: text;
+            color: transparent; /* Make the text color transparent to show the gradient */
+            text-align: center;
+            margin-bottom: 20px;
+            animation: blink 1s infinite; /* Blinking effect */
+            padding: 10px; /* Optional padding for extra spacing */
+            border-radius: 5px; /* Optional border radius for smooth edges */
+        }
+        
+        
+        
+
+
+        .footer {
+            background: #343a40;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+        .footer .social-icons a {
+            color: white;
+            margin: 0 10px;
+            transition: color 0.3s;
+        }
+        .footer .social-icons a:hover {
+            color: #f8d64e;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Header -->
+<header class="navbar navbar-expand-lg navbar-dark bg-dark shadow">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">Pascal Jewellery</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link" href="#" id="productDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Products <i class="fa fa-check"></i>
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="productDropdown">
+                        <li><a class="dropdown-item" href="Precious-Products.html">Precious Products</a></li>
+                        <li><a class="dropdown-item" href="Semi-Precious-Products.html">Semi-Precious Products</a></li>
+                        <li><a class="dropdown-item" href="Artificial-products.html">Artificial Products</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item"><a class="nav-link" href="#gallery">Gallery</a></li>
+                <li class="nav-item"><a class="nav-link" href="contactus.html">Contact</a></li>
+                <li class="nav-item"><a class="nav-link" href="aboutus.html">About</a></li>
+            </ul>
+        </div>
+    </div>
+</header>
+
+<!-- Banner Section -->
+<section class="text-center py-5" style=" background: linear-gradient(to right, #f0f0f0, #dcdcdc);">
+    <div class="container">
+        <h2 class="display-4">Exquisite Precious Jewelry</h2>
+        <p class="lead">Timeless Elegance & Stunning Designs</p>
+    </div>
+</section>
+
+
+
+<h2 class="section-heading text-center my-4">Our Products Collection</h2>
+<h2 class="sub-heading text-center my-4">Precious Bracelet</h2>
+<div class="container-fluid my-4" style=" background: linear-gradient(to right, #f0f0f0, #dcdcdc); padding-bottom:50px;">
+    <!-- background: linear-gradient(to right, #f0e1e1, #c1a3a3); -->
+    <div class="container pt-5 pb-5">
+        <div class="row mt-4 g-4"> <!-- Added g-4 for consistent spacing between rows/columns -->
+            <!-- Card 1 -->
+            <div class="col-lg-3 col-md-6 col-sm-12">
+                <div class="card product-card h-100">
+                    <img src="images/bracelets/bracelet-1.png" class="card-img-top" alt="Diamond Ring">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">BRACELATE</h5>
+                        <p class="card-text text-center">A beautiful diamond ring with premium clarity and elegance.</p>
+                        <p class="text-center"><strong data-base-price="2000">Price: $2000</strong></p>
+                        <div class="quantity-controls text-center">
+                            <button class="btn btn-outline-secondary me-3" onclick="decreaseQuantity(this)">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                            <span class="quantity me-3">0</span>
+                            <button class="btn btn-outline-secondary" onclick="increaseQuantity(this)">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                        </div>
+                        <button class="btn btn-primary mt-3" href="checkout.html">Buy Now</button>
+                        <button class="btn btn-secondary mt-3">Compare</button>
+                        <button class="btn btn-danger mt-3" onclick="clearQuantity(this)">Clear</button>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Repeat for other cards -->
+             <!-- Card 1 -->
+             <div class="col-lg-3 col-md-6 col-sm-12">
+                <div class="card product-card h-100">
+                    <img src="images/bracelets/bracelet-2.png" class="card-img-top" alt="Diamond Ring">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">BRACELATE</h5>
+                        <p class="card-text text-center">A beautiful diamond ring with premium clarity and elegance.</p>
+                        <p class="text-center"><strong data-base-price="2000">Price: $2000</strong></p>
+                        <div class="quantity-controls text-center">
+                            <button class="btn btn-outline-secondary me-3" onclick="decreaseQuantity(this)">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                            <span class="quantity me-3">0</span>
+                            <button class="btn btn-outline-secondary" onclick="increaseQuantity(this)">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                        </div>
+                        <button class="btn btn-primary mt-3" href="checkout.html">Buy Now</button>
+                        <button class="btn btn-secondary mt-3">Compare</button>
+                        <button class="btn btn-danger mt-3" onclick="clearQuantity(this)">Clear</button>
+                    </div>
+                </div>
+            </div>
+
+             <!-- Card 1 -->
+            <div class="col-lg-3 col-md-6 col-sm-12">
+                <div class="card product-card h-100">
+                    <img src="images/bracelets/bracelet-3.png" class="card-img-top" alt="Diamond Ring">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">BRACELATE</h5>
+                        <p class="card-text text-center">A beautiful diamond ring with premium clarity and elegance.</p>
+                        <p class="text-center"><strong data-base-price="2000">Price: $2000</strong></p>
+                        <div class="quantity-controls text-center">
+                            <button class="btn btn-outline-secondary me-3" onclick="decreaseQuantity(this)">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                            <span class="quantity me-3">0</span>
+                            <button class="btn btn-outline-secondary" onclick="increaseQuantity(this)">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                        </div>
+                        <button class="btn btn-primary mt-3" href="checkout.html">Buy Now</button>
+                        <button class="btn btn-secondary mt-3">Compare</button>
+                        <button class="btn btn-danger mt-3" onclick="clearQuantity(this)">Clear</button>
+                    </div>
+                </div>
+            </div>
+    
+             <!-- Card 1 -->
+             <div class="col-lg-3 col-md-6 col-sm-12">
+                <div class="card product-card h-100">
+                    <img src="images/bracelets/bracelet-4.png" class="card-img-top" alt="Diamond Ring">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">BRACELATE</h5>
+                        <p class="card-text text-center">A beautiful diamond ring with premium clarity and elegance.</p>
+                        <p class="text-center"><strong data-base-price="2000">Price: $2000</strong></p>
+                        <div class="quantity-controls text-center">
+                            <button class="btn btn-outline-secondary me-3" onclick="decreaseQuantity(this)">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                            <span class="quantity me-3">0</span>
+                            <button class="btn btn-outline-secondary" onclick="increaseQuantity(this)">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                        </div>
+                        <button class="btn btn-primary mt-3" href="checkout.html">Buy Now</button>
+                        <button class="btn btn-secondary mt-3">Compare</button>
+                        <button class="btn btn-danger mt-3" onclick="clearQuantity(this)">Clear</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+</div>
+
+</div>
+
+<h2 class="sub-heading text-center my-4">Precious Ring</h2>
+<div class="container-fluid my-4" style=" background: linear-gradient(to right, #f0f0f0, #dcdcdc); padding-bottom:50px;">
+
+    <div class="container pt-5 pb-5">
+        <div class="row mt-4 g-4"> <!-- Added g-4 for consistent spacing between rows/columns -->
+             <!-- Card 1 -->
+             <div class="col-lg-3 col-md-6 col-sm-12">
+                <div class="card product-card h-100">
+                    <img src="images/ring/Ring-2.png" class="card-img-top" alt="Diamond Ring">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">RING</h5>
+                        <p class="card-text text-center">A beautiful diamond ring with premium clarity and elegance.</p>
+                        <p class="text-center"><strong data-base-price="2000">Price: $2000</strong></p>
+                        <div class="quantity-controls text-center">
+                            <button class="btn btn-outline-secondary me-3" onclick="decreaseQuantity(this)">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                            <span class="quantity me-3">0</span>
+                            <button class="btn btn-outline-secondary" onclick="increaseQuantity(this)">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                        </div>
+                        <button class="btn btn-primary mt-3" href="checkout.html">Buy Now</button>
+                        <button class="btn btn-secondary mt-3">Compare</button>
+                        <button class="btn btn-danger mt-3" onclick="clearQuantity(this)">Clear</button>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Repeat for other cards -->
+             <!-- Card 1 -->
+             <div class="col-lg-3 col-md-6 col-sm-12">
+                <div class="card product-card h-100">
+                    <img src="images/ring/Ring-3.png" class="card-img-top" alt="Diamond Ring">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">RING</h5>
+                        <p class="card-text text-center">A beautiful diamond ring with premium clarity and elegance.</p>
+                        <p class="text-center"><strong data-base-price="2000">Price: $2000</strong></p>
+                        <div class="quantity-controls text-center">
+                            <button class="btn btn-outline-secondary me-3" onclick="decreaseQuantity(this)">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                            <span class="quantity me-3">0</span>
+                            <button class="btn btn-outline-secondary" onclick="increaseQuantity(this)">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                        </div>
+                        <button class="btn btn-primary mt-3" href="checkout.html">Buy Now</button>
+                        <button class="btn btn-secondary mt-3">Compare</button>
+                        <button class="btn btn-danger mt-3" onclick="clearQuantity(this)">Clear</button>
+                    </div>
+                </div>
+            </div>
+    
+             <!-- Card 1 -->
+             <div class="col-lg-3 col-md-6 col-sm-12">
+                <div class="card product-card h-100">
+                    <img src="images/ring/Ring-4.png" class="card-img-top" alt="Diamond Ring">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">RING</h5>
+                        <p class="card-text text-center">A beautiful diamond ring with premium clarity and elegance.</p>
+                        <p class="text-center"><strong data-base-price="2000">Price: $2000</strong></p>
+                        <div class="quantity-controls text-center">
+                            <button class="btn btn-outline-secondary me-3" onclick="decreaseQuantity(this)">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                            <span class="quantity me-3">0</span>
+                            <button class="btn btn-outline-secondary" onclick="increaseQuantity(this)">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                        </div>
+                        <button class="btn btn-primary mt-3" href="checkout.html">Buy Now</button>
+                        <button class="btn btn-secondary mt-3">Compare</button>
+                        <button class="btn btn-danger mt-3" onclick="clearQuantity(this)">Clear</button>
+                    </div>
+                </div>
+            </div>
+    
+             <!-- Card 1 -->
+             <div class="col-lg-3 col-md-6 col-sm-12">
+                <div class="card product-card h-100">
+                    <img src="images/ring/Ring-5.png" class="card-img-top" alt="Diamond Ring">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">RING</h5>
+                        <p class="card-text text-center">A beautiful diamond ring with premium clarity and elegance.</p>
+                        <p class="text-center"><strong data-base-price="2000">Price: $2000</strong></p>
+                        <div class="quantity-controls text-center">
+                            <button class="btn btn-outline-secondary me-3" onclick="decreaseQuantity(this)">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                            <span class="quantity me-3">0</span>
+                            <button class="btn btn-outline-secondary" onclick="increaseQuantity(this)">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                        </div>
+                        <button class="btn btn-primary mt-3" href="checkout.html">Buy Now</button>
+                        <button class="btn btn-secondary mt-3">Compare</button>
+                        <button class="btn btn-danger mt-3" onclick="clearQuantity(this)">Clear</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+</div>
+
+</div>
+
+
+
+<h2 class="sub-heading text-center my-4">Precious Neclaces</h2>
+<div class="container-fluid my-4" style=" background: linear-gradient(to right, #f0f0f0, #dcdcdc); padding-bottom:50px;">
+
+
+    
+    <div class="container pt-5 pb-5">
+        <div class="row mt-4 g-4"> <!-- Added g-4 for consistent spacing between rows/columns -->
+            <!-- Card 1 -->
+             <!-- Card 1 -->
+             <div class="col-lg-3 col-md-6 col-sm-12">
+                <div class="card product-card h-100">
+                    <img src="images/Necklace/Neck-1.png" class="card-img-top" alt="Diamond Ring">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">NECKLACE</h5>
+                        <p class="card-text text-center">A beautiful diamond ring with premium clarity and elegance.</p>
+                        <p class="text-center"><strong data-base-price="2000">Price: $2000</strong></p>
+                        <div class="quantity-controls text-center">
+                            <button class="btn btn-outline-secondary me-3" onclick="decreaseQuantity(this)">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                            <span class="quantity me-3">0</span>
+                            <button class="btn btn-outline-secondary" onclick="increaseQuantity(this)">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                        </div>
+                        <button class="btn btn-primary mt-3" href="checkout.html">Buy Now</button>
+                        <button class="btn btn-secondary mt-3">Compare</button>
+                        <button class="btn btn-danger mt-3" onclick="clearQuantity(this)">Clear</button>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Repeat for other cards -->
+             <!-- Card 1 -->
+             <div class="col-lg-3 col-md-6 col-sm-12">
+                <div class="card product-card h-100">
+                    <img src="images/Necklace/Neck-2.png" class="card-img-top" alt="Diamond Ring">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">NECKLACE</h5>
+                        <p class="card-text text-center">A beautiful diamond ring with premium clarity and elegance.</p>
+                        <p class="text-center"><strong data-base-price="2000">Price: $2000</strong></p>
+                        <div class="quantity-controls text-center">
+                            <button class="btn btn-outline-secondary me-3" onclick="decreaseQuantity(this)">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                            <span class="quantity me-3">0</span>
+                            <button class="btn btn-outline-secondary" onclick="increaseQuantity(this)">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                        </div>
+                        <button class="btn btn-primary mt-3" href="checkout.html">Buy Now</button>
+                        <button class="btn btn-secondary mt-3">Compare</button>
+                        <button class="btn btn-danger mt-3" onclick="clearQuantity(this)">Clear</button>
+                    </div>
+                </div>
+            </div>
+    
+             <!-- Card 1 -->
+             <div class="col-lg-3 col-md-6 col-sm-12">
+                <div class="card product-card h-100">
+                    <img src="images/Necklace/Neck-3.png" class="card-img-top" alt="Diamond Ring">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">NECKLACE</h5>
+                        <p class="card-text text-center">A beautiful diamond ring with premium clarity and elegance.</p>
+                        <p class="text-center"><strong data-base-price="2000">Price: $2000</strong></p>
+                        <div class="quantity-controls text-center">
+                            <button class="btn btn-outline-secondary me-3" onclick="decreaseQuantity(this)">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                            <span class="quantity me-3">0</span>
+                            <button class="btn btn-outline-secondary" onclick="increaseQuantity(this)">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                        </div>
+                        <button class="btn btn-primary mt-3" href="checkout.html">Buy Now</button>
+                        <button class="btn btn-secondary mt-3">Compare</button>
+                        <button class="btn btn-danger mt-3" onclick="clearQuantity(this)">Clear</button>
+                    </div>
+                </div>
+            </div>
+    
+             <!-- Card 1 -->
+             <div class="col-lg-3 col-md-6 col-sm-12">
+                <div class="card product-card h-100">
+                    <img src="images/Necklace/Neck-4.png" class="card-img-top" alt="Diamond Ring">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">NECKLACE</h5>
+                        <p class="card-text text-center">A beautiful diamond ring with premium clarity and elegance.</p>
+                        <p class="text-center"><strong data-base-price="2000">Price: $2000</strong></p>
+                        <div class="quantity-controls text-center">
+                            <button class="btn btn-outline-secondary me-3" onclick="decreaseQuantity(this)">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                            <span class="quantity me-3">0</span>
+                            <button class="btn btn-outline-secondary" onclick="increaseQuantity(this)">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                        </div>
+                        <button class="btn btn-primary mt-3" href="checkout.html">Buy Now</button>
+                        <button class="btn btn-secondary mt-3">Compare</button>
+                        <button class="btn btn-danger mt-3" onclick="clearQuantity(this)">Clear</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+</div>
+
+</div>
+
+<h2 class="sub-heading text-center my-4">Precious Bangles</h2>
+<div class="container-fluid mt-4" style=" background: linear-gradient(to right, #f0f0f0, #dcdcdc); padding-bottom:50px;">
+    
+    
+    <div class="container pt-5 pb-5">
+        <div class="row mt-4 g-4"> <!-- Added g-4 for consistent spacing between rows/columns -->
+            <!-- Card 1 -->
+             <!-- Card 1 -->
+             <div class="col-lg-3 col-md-6 col-sm-12">
+                <div class="card product-card h-100">
+                    <img src="images/bangles/bangle-1.png" class="card-img-top" alt="Diamond Ring">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">BANGLES</h5>
+                        <p class="card-text text-center">A beautiful diamond ring with premium clarity and elegance.</p>
+                        <p class="text-center"><strong data-base-price="2000">Price: $2000</strong></p>
+                        <div class="quantity-controls text-center">
+                            <button class="btn btn-outline-secondary me-3" onclick="decreaseQuantity(this)">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                            <span class="quantity me-3">0</span>
+                            <button class="btn btn-outline-secondary" onclick="increaseQuantity(this)">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                        </div>
+                        <button class="btn btn-primary mt-3" href="checkout.html">Buy Now</button>
+                        <button class="btn btn-secondary mt-3">Compare</button>
+                        <button class="btn btn-danger mt-3" onclick="clearQuantity(this)">Clear</button>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Repeat for other cards -->
+             <!-- Card 1 -->
+             <div class="col-lg-3 col-md-6 col-sm-12">
+                <div class="card product-card h-100">
+                    <img src="images/bangles/bangle-2.png" class="card-img-top" alt="Diamond Ring">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">BANGLES</h5>
+                        <p class="card-text text-center">A beautiful diamond ring with premium clarity and elegance.</p>
+                        <p class="text-center"><strong data-base-price="2000">Price: $2000</strong></p>
+                        <div class="quantity-controls text-center">
+                            <button class="btn btn-outline-secondary me-3" onclick="decreaseQuantity(this)">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                            <span class="quantity me-3">0</span>
+                            <button class="btn btn-outline-secondary" onclick="increaseQuantity(this)">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                        </div>
+                        <button class="btn btn-primary mt-3" href="checkout.html">Buy Now</button>
+                        <button class="btn btn-secondary mt-3">Compare</button>
+                        <button class="btn btn-danger mt-3" onclick="clearQuantity(this)">Clear</button>
+                    </div>
+                </div>
+            </div>
+    
+             <!-- Card 1 -->
+             <div class="col-lg-3 col-md-6 col-sm-12">
+                <div class="card product-card h-100">
+                    <img src="images/bangles/bangle-3.png" class="card-img-top" alt="Diamond Ring">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">BANGLES</h5>
+                        <p class="card-text text-center">A beautiful diamond ring with premium clarity and elegance.</p>
+                        <p class="text-center"><strong data-base-price="2000">Price: $2000</strong></p>
+                        <div class="quantity-controls text-center">
+                            <button class="btn btn-outline-secondary me-3" onclick="decreaseQuantity(this)">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                            <span class="quantity me-3">0</span>
+                            <button class="btn btn-outline-secondary" onclick="increaseQuantity(this)">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                        </div>
+                        <button class="btn btn-primary mt-3" href="checkout.html">Buy Now</button>
+                        <button class="btn btn-secondary mt-3">Compare</button>
+                        <button class="btn btn-danger mt-3" onclick="clearQuantity(this)">Clear</button>
+                    </div>
+                </div>
+            </div>
+    
+             <!-- Card 1 -->
+             <div class="col-lg-3 col-md-6 col-sm-12">
+                <div class="card product-card h-100">
+                    <img src="images/bangles/bangle-4.png" class="card-img-top" alt="Diamond Ring">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">BANGLES</h5>
+                        <p class="card-text text-center">A beautiful diamond ring with premium clarity and elegance.</p>
+                        <p class="text-center"><strong data-base-price="2000">Price: $2000</strong></p>
+                        <div class="quantity-controls text-center">
+                            <button class="btn btn-outline-secondary me-3" onclick="decreaseQuantity(this)">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                            <span class="quantity me-3">0</span>
+                            <button class="btn btn-outline-secondary" onclick="increaseQuantity(this)">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                        </div>
+                        
+                        <button class="btn btn-primary mt-3" href="checkout.html">Buy Now</button>
+                        <button class="btn btn-secondary mt-3">Compare</button>
+                        <button class="btn btn-danger mt-3 " onclick="clearQuantity(this)">Clear</button>
+                    
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+</div>
+
+</div>
+
+        
+
+
+
+
+
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="container">
+        <p>&copy; 2024 Pascal Imitation Jewellery. All Rights Reserved.</p>
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+    </div>
+</footer>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    function increaseQuantity(button) {
+        const quantityElement = button.previousElementSibling; // Select the quantity span
+        let currentQuantity = parseInt(quantityElement.textContent) || 0; // Default to 0 if invalid
+        const newQuantity = currentQuantity + 1; // Increment quantity
+        quantityElement.textContent = newQuantity; // Update quantity in UI
+    
+        // Update price
+        const cardBody = button.closest('.card-body');
+        updatePrice(cardBody, newQuantity);
+    }
+    
+    function decreaseQuantity(button) {
+        const quantityElement = button.nextElementSibling; // Select the quantity span
+        let currentQuantity = parseInt(quantityElement.textContent) || 0; // Default to 0 if invalid
+        if (currentQuantity > 0) {
+            const newQuantity = currentQuantity - 1; // Decrement quantity
+            quantityElement.textContent = newQuantity; // Update quantity in UI
+    
+            // Update price
+            const cardBody = button.closest('.card-body');
+            updatePrice(cardBody, newQuantity);
+        }
+    }
+    
+    function updatePrice(cardBody, quantity) {
+        const priceElement = cardBody.querySelector('strong[data-base-price]'); // Find the price element
+        const basePrice = parseInt(priceElement.dataset.basePrice); // Retrieve base price
+        if (isNaN(basePrice)) {
+            console.error("Base price is not valid");
+            return;
+        }
+        const newPrice = basePrice * quantity; // Calculate new price
+        priceElement.textContent = `Price: $${newPrice}`; // Update price in UI
+    }
+    
+    function clearQuantity(button) {
+        const cardBody = button.closest('.card-body'); // Find the parent card body
+        const quantityElement = cardBody.querySelector('.quantity'); // Select the quantity span
+        quantityElement.textContent = 0; // Reset quantity to 0
+    
+        // Update price
+        updatePrice(cardBody, 0); // Pass 0 as the quantity
+    }
+
+    const buttons = document.querySelectorAll(".btn.btn-primary");
+
+    // Loop through all buttons and filter based on inner text
+    buttons.forEach(button => {
+      if (button.innerText === "Buy Now") {
+        // Add event listener for click
+        button.addEventListener("click", () => {
+          // Redirect to checkout.html
+          window.location.href = "checkout.html";
+        });
+      }
+    });
+    
+</script>
+
+</body>
+</html>
